@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07100f" />
+  <title>方块深层撤离 · BLOCK EXTRACTION</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="app">
+    <section id="menu" class="screen active">
+      <div class="menu-noise"></div>
+      <div class="brand">
+        <div class="eyebrow">BLACKSTONE EXPEDITION // SEASON 01</div>
+        <h1>方块<br><span>深层撤离</span></h1>
+        <p>挖开战场。带走核心。活着回来。</p>
+      </div>
+      <div class="menu-card">
+        <div class="operative"><div class="avatar">▰</div><div><small>探索者</small><strong id="profileName">R-071</strong></div><div class="credits"><small>信用点</small><strong id="credits">0</strong></div></div>
+        <button id="startBtn" class="primary"><span>进入废弃黑石矿井</span><b>开始行动 →</b></button>
+        <div class="brief"><span>任务</span><p>搜寻遗物，深入矿井取得能源核心，并从升降机撤离。</p></div>
+        <div class="stats"><div><small>最佳收益</small><b id="bestValue">0</b></div><div><small>成功撤离</small><b id="extracts">0</b></div><div><small>行动时限</small><b>08:00</b></div></div>
+        <button id="resetBtn" class="ghost">清除本地行动记录</button>
+      </div>
+      <div class="controls-hint">WASD 移动 · 鼠标观察/攻击 · E 交互 · Q 工具 · 1/2 切换 · R 换弹</div>
+    </section>
+
+    <section id="game" class="screen">
+      <canvas id="view" aria-label="3D 游戏画面"></canvas>
+      <div id="damageFlash"></div><div id="vignette"></div>
+      <header class="top-hud"><div class="depth"><small>当前位置</small><b id="zone">地表装卸站</b></div><div class="timer"><small>遗迹坍塌倒计时</small><b id="timer">08:00</b><i id="stabilityBar"></i></div><div class="mission"><small>当前目标</small><b id="objective">搜索矿井物资</b></div></header>
+      <div id="eventBanner"></div>
+      <div id="crosshair"><i></i><i></i><i></i><i></i><span></span></div>
+      <div id="prompt"></div>
+      <aside id="log"></aside>
+      <div class="bottom-hud">
+        <div class="vitals"><label>生命 <b id="hpText">100</b></label><div><i id="hpBar"></i></div><label>护甲 <b id="armorText">50</b></label><div class="armor"><i id="armorBar"></i></div><label>体力</label><div class="stamina"><i id="staminaBar"></i></div></div>
+        <div class="weapon"><div id="weaponIcon">⌁</div><div><small id="weaponName">废土步枪</small><b><span id="ammo">18</span><em>/</em><span id="reserve">72</span></b></div><div class="slots"><i class="active">1</i><i>2</i><i>Q</i></div></div>
+        <div class="haul"><small>背包估值</small><b>₵ <span id="value">0</span></b><div><span id="weightBar"></span></div><p><span id="items">0</span>/8 格 · <span id="cores">0</span> 核心</p></div>
+      </div>
+      <div id="minimap"><canvas id="mapCanvas" width="180" height="180"></canvas><span>N</span></div>
+      <div id="mobileControls"><div id="movePad"><i></i></div><button id="fireBtn">开火</button><button id="useBtn">交互</button></div>
+      <div id="pause" class="modal"><div><small>行动暂停</small><h2>继续深入，还是返回地表？</h2><button id="resumeBtn" class="primary">继续行动</button><button id="quitBtn" class="danger">放弃本次行动</button></div></div>
+    </section>
+
+    <section id="result" class="screen result-screen"><div class="result-card"><small id="resultLabel">行动结算</small><h2 id="resultTitle">成功撤离</h2><p id="resultSub">战利品已转入地表仓库</p><div class="result-value"><span>本次收益</span><b>₵ <span id="resultValue">0</span></b></div><div id="resultStats" class="result-stats"></div><div class="loot-list" id="lootList"></div><button id="againBtn" class="primary">再次进入矿井</button><button id="homeBtn" class="ghost">返回行动中心</button></div></section>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
